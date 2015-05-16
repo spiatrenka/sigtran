@@ -3,6 +3,7 @@
 namespace Vgks\SigtranBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Materials
@@ -25,6 +26,7 @@ class Materials
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=45, nullable=true)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -32,6 +34,7 @@ class Materials
      * @var string
      *
      * @ORM\Column(name="text", type="text", nullable=true)
+     * @Assert\NotBlank()
      */
     private $text;
 
