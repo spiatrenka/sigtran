@@ -1,0 +1,4 @@
+services:
+#    vgks_sigtran.example:
+#        class: Vgks\SigtranBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
