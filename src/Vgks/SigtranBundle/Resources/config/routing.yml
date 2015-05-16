@@ -5,6 +5,8 @@ vgks_sigtran_homepage:
 vgks_sigtran_material_show:
     path:     /material/{id}
     defaults: { _controller: VgksSigtranBundle:Material:show }
+    requirements:
+        id: \d+
 
 vgks_sigtran_material_add:
     path:     /material/add
