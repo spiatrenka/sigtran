@@ -3,6 +3,7 @@
 namespace Vgks\SigtranBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Questions
@@ -28,7 +29,14 @@ class Questions
      */
     private $text;
 
+    private $answers;
 
+
+
+    public function __construct()
+    {
+        $this->answers = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -61,5 +69,15 @@ class Questions
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * Get answers
+     *
+     * @return ArrayCollection
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
     }
 }

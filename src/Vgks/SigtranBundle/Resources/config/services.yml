@@ -6,3 +6,8 @@ services:
             class: Vgks\SigtranBundle\Form\Type\MaterialType
             tags:
                 - { name: form.type, alias: material }
+
+    vgks_sigtran.form.type.question:
+                class: Vgks\SigtranBundle\Form\Type\QuestionType
+                tags:
+                    - { name: form.type, alias: question }
