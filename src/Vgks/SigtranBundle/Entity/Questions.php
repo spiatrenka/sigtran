@@ -29,6 +29,9 @@ class Questions
      */
     private $text;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Answers", mappedBy="question")
+     */
     private $answers;
 
 
@@ -72,9 +75,32 @@ class Questions
     }
 
     /**
+     * Add answers
+     *
+     * @param \Vgks\SigtranBundle\Entity\Answers $answers
+     * @return Questions
+     */
+    public function addAnswer(\Vgks\SigtranBundle\Entity\Answers $answers)
+    {
+        $this->answers[] = $answers;
+
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param \Vgks\SigtranBundle\Entity\Answers $answers
+     */
+    public function removeAnswer(\Vgks\SigtranBundle\Entity\Answers $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
      * Get answers
      *
-     * @return ArrayCollection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getAnswers()
     {

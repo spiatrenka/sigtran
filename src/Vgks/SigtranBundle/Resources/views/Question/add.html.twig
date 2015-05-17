@@ -8,7 +8,7 @@
     {{ form_row(form.text) }}
 
     <h3>Answers</h3>
-    <ul class="tags">
+    <ul class="answers">
         {# iterate over each existing answers and render its fields: text and correct #}
         {% for answer in form.answers %}
             <li>{{ form_row(answer.text) }}</li>

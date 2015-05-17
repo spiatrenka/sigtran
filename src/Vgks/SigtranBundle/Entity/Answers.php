@@ -22,11 +22,10 @@ class Answers
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="q_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Questions", inversedBy="answers")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
-    private $qId;
+    private $question;
 
     /**
      * @var string
@@ -52,29 +51,6 @@ class Answers
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set qId
-     *
-     * @param integer $qId
-     * @return Answers
-     */
-    public function setQId($qId)
-    {
-        $this->qId = $qId;
-
-        return $this;
-    }
-
-    /**
-     * Get qId
-     *
-     * @return integer 
-     */
-    public function getQId()
-    {
-        return $this->qId;
     }
 
     /**
@@ -121,5 +97,28 @@ class Answers
     public function getCorrect()
     {
         return $this->correct;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \Vgks\SigtranBundle\Entity\Questions $question
+     * @return Answers
+     */
+    public function setQuestion(\Vgks\SigtranBundle\Entity\Questions $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Vgks\SigtranBundle\Entity\Questions 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
     }
 }

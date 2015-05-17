@@ -1,0 +1,10 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2>Show question page:</h2>
+    <h3>Question # {{ question.id }}:</h3>
+    <p>{{ question.text }}</p>
+    {% for answer in question.answers %}
+        <p>{{ loop.index }}. {{ answer.text }}</p>
+    {% endfor %}
+{% endblock %}

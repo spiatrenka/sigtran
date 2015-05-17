@@ -9,20 +9,30 @@ use Symfony\Component\HttpFoundation\Request;
 
 class QuestionController extends Controller
 {
+    public function showAction($id)
+    {
+        $question = $this->getDoctrine()
+            ->getRepository('VgksSigtranBundle:Questions')
+            ->find($id);
+
+        if (!$question) {
+            throw $this->createNotFoundException(
+                'Извините, вопрос с номером ' . $id . ' не найден'
+            );
+        }
+
+        return $this->render('VgksSigtranBundle:Question:show.html.twig', array(
+            'question' => $question,
+        ));
+    }
+
     public function addAction(Request $request)
     {
         $question = new Questions();
 
-        // dummy code - this is here just so that the Task has some tags
-        // otherwise, this isn't an interesting example
-        $answer1 = new Answers();
-        $answer1->setText('answer1');
-        $question->getAnswers()->add($answer1);
-        $answer2 = new Answers();
-        $answer2->setText('answer2');
-        $answer2->setCorrect(true);
-        $question->getAnswers()->add($answer2);
-        // end dummy code
+        for ($i = 0; $i < 4; $i++) {
+            $question->getAnswers()->add(new Answers());
+        }
 
         $form = $this->createForm('question', $question);
 
@@ -34,20 +44,13 @@ class QuestionController extends Controller
             $em->persist($question);
             $answers = $question->getAnswers();
             foreach ($answers as $answer) {
+                $answer->setQuestion($question);
                 $em->persist($answer);
             }
             $em->flush();
 
             return $this->redirectToRoute('vgks_sigtran_question_success');
         }
-
-        /*if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($material);
-            $em->flush();
-
-            return $this->redirectToRoute('vgks_sigtran_material_success');
-        }*/
 
         return $this->render('VgksSigtranBundle:Question:add.html.twig', array(
             'form' => $form->createView(),
