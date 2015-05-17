@@ -49,7 +49,9 @@ class QuestionController extends Controller
             }
             $em->flush();
 
-            return $this->redirectToRoute('vgks_sigtran_question_success');
+            return $this->redirectToRoute('vgks_sigtran_success', array(
+                'message' => 'Вопрос был успешно добавлен',
+            ));
         }
 
         return $this->render('VgksSigtranBundle:Question:add.html.twig', array(

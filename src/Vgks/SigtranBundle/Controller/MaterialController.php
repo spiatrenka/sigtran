@@ -37,11 +37,50 @@ class MaterialController extends Controller
             $em->persist($material);
             $em->flush();
 
-            return $this->redirectToRoute('vgks_sigtran_material_success');
+            return $this->redirectToRoute('vgks_sigtran_success', array(
+                'message' => 'Материал был успешно добавлен',
+            ));
         }
 
         return $this->render('VgksSigtranBundle:Material:add.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+
+    public function editAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $material = $em->getRepository('VgksSigtranBundle:Materials')->find($id);
+
+        $form = $this->createForm('material', $material);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($material);
+            $em->flush();
+
+            return $this->redirectToRoute('vgks_sigtran_success', array(
+                'message' => 'Материал бы успешно изменен',
+            ));
+        }
+
+        return $this->render('VgksSigtranBundle:Material:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+    }
+
+    public function deleteAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $material = $em->getRepository('VgksSigtranBundle:Materials')->find($id);
+
+        $em->remove($material);
+        $em->flush();
+
+        return $this->redirectToRoute('vgks_sigtran_success', array(
+            'message' => 'Материал был успешно удален',
         ));
     }
 

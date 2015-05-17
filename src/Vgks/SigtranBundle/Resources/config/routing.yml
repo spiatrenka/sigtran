@@ -2,6 +2,10 @@ vgks_sigtran_homepage:
     path:     /
     defaults: { _controller: VgksSigtranBundle:Default:index }
 
+vgks_sigtran_success:
+    path:     /success
+    defaults: { _controller: VgksSigtranBundle:Default:success }
+
 vgks_sigtran_material_show:
     path:     /material/{id}
     defaults: { _controller: VgksSigtranBundle:Material:show }
@@ -16,9 +20,9 @@ vgks_sigtran_material_edit:
     path:     /material/edit/{id}
     defaults: { _controller: VgksSigtranBundle:Material:edit }
 
-vgks_sigtran_material_success:
-    path:     /material/success
-    defaults: { _controller: VgksSigtranBundle:Material:success }
+vgks_sigtran_material_delete:
+    path:     /material/delete/{id}
+    defaults: { _controller: VgksSigtranBundle:Material:delete }
 
 vgks_sigtran_question_show:
     path:     /question/{id}
@@ -29,8 +33,3 @@ vgks_sigtran_question_show:
 vgks_sigtran_question_add:
     path:     /question/add
     defaults: { _controller: VgksSigtranBundle:Question:add }
-
-vgks_sigtran_question_success:
-    path:     /question/success
-    defaults: { _controller: VgksSigtranBundle:Question:success }
-
