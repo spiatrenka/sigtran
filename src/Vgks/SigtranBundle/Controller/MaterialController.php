@@ -83,9 +83,4 @@ class MaterialController extends Controller
             'message' => 'Материал был успешно удален',
         ));
     }
-
-    public function successAction()
-    {
-        return $this->render('VgksSigtranBundle:Material:success.html.twig');
-    }
 }

@@ -39,7 +39,6 @@ class QuestionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // ... maybe do some form processing, like saving the Task and Tag objects
             $em = $this->getDoctrine()->getManager();
             $em->persist($question);
             $answers = $question->getAnswers();
@@ -59,8 +58,49 @@ class QuestionController extends Controller
         ));
     }
 
-    public function successAction()
+    public function editAction($id, Request $request)
     {
-        return $this->render('VgksSigtranBundle:Question:success.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $question = $em->getRepository('VgksSigtranBundle:Questions')->find($id);
+
+        $form = $this->createForm('question', $question);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($question);
+            $answers = $question->getAnswers();
+            foreach ($answers as $answer) {
+                $answer->setQuestion($question);
+                $em->persist($answer);
+            }
+            $em->flush();
+
+            return $this->redirectToRoute('vgks_sigtran_success', array(
+                'message' => 'Вопрос был успешно изменен',
+            ));
+        }
+
+        return $this->render('VgksSigtranBundle:Question:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $question = $em->getRepository('VgksSigtranBundle:Questions')->find($id);
+
+        $answers = $question->getAnswers();
+        $em->remove($question);
+        foreach ($answers as $answer) {
+            $em->remove($answer);
+        }
+        $em->flush();
+
+        return $this->redirectToRoute('vgks_sigtran_success', array(
+            'message' => 'Вопрос был успешно удален',
+        ));
     }
 }

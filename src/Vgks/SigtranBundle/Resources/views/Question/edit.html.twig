@@ -1,0 +1,19 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    Edit question page
+
+    {{ form_start(form) }}
+    {# render the question's only field: description #}
+    {{ form_row(form.text) }}
+
+    <h3>Answers</h3>
+    <ul class="answers">
+        {# iterate over each existing answers and render its fields: text and correct #}
+        {% for answer in form.answers %}
+            <li>{{ form_row(answer.text) }}</li>
+            <li>{{ form_row(answer.correct) }}</li>
+        {% endfor %}
+    </ul>
+    {{ form_end(form) }}
+{% endblock %}

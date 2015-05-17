@@ -19,10 +19,14 @@ vgks_sigtran_material_add:
 vgks_sigtran_material_edit:
     path:     /material/edit/{id}
     defaults: { _controller: VgksSigtranBundle:Material:edit }
+    requirements:
+        id: \d+
 
 vgks_sigtran_material_delete:
     path:     /material/delete/{id}
     defaults: { _controller: VgksSigtranBundle:Material:delete }
+    requirements:
+        id: \d+
 
 vgks_sigtran_question_show:
     path:     /question/{id}
@@ -33,3 +37,15 @@ vgks_sigtran_question_show:
 vgks_sigtran_question_add:
     path:     /question/add
     defaults: { _controller: VgksSigtranBundle:Question:add }
+
+vgks_sigtran_question_edit:
+    path:     /question/edit/{id}
+    defaults: { _controller: VgksSigtranBundle:Question:edit }
+    requirements:
+        id: \d+
+
+vgks_sigtran_question_delete:
+    path:     /question/delete/{id}
+    defaults: { _controller: VgksSigtranBundle:Question:delete }
+    requirements:
+        id: \d+
