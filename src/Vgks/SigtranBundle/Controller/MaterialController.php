@@ -8,9 +8,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class MaterialController extends Controller
 {
-    public function showAction()
+    public function showAction($id)
     {
-        return $this->render('VgksSigtranBundle:Material:show.html.twig');
+        $material = $this->getDoctrine()
+            ->getRepository('VgksSigtranBundle:Materials')
+            ->find($id);
+
+        if (!$material) {
+            throw $this->createNotFoundException(
+                'Извините, материал с номером ' . $id . 'не найден'
+            );
+        }
+
+        return $this->render('VgksSigtranBundle:Material:show.html.twig', array(
+            'material' => $material,
+        ));
     }
 
     public function addAction(Request $request)
