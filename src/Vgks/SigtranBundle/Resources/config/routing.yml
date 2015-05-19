@@ -13,17 +13,17 @@ vgks_sigtran_material_show:
         id: \d+
 
 vgks_sigtran_material_add:
-    path:     /material/add
+    path:     /admin/material/add
     defaults: { _controller: VgksSigtranBundle:Material:add }
 
 vgks_sigtran_material_edit:
-    path:     /material/edit/{id}
+    path:     /admin/material/edit/{id}
     defaults: { _controller: VgksSigtranBundle:Material:edit }
     requirements:
         id: \d+
 
 vgks_sigtran_material_delete:
-    path:     /material/delete/{id}
+    path:     /admin/material/delete/{id}
     defaults: { _controller: VgksSigtranBundle:Material:delete }
     requirements:
         id: \d+
@@ -35,17 +35,17 @@ vgks_sigtran_question_show:
         id: \d+
 
 vgks_sigtran_question_add:
-    path:     /question/add
+    path:     /admin/question/add
     defaults: { _controller: VgksSigtranBundle:Question:add }
 
 vgks_sigtran_question_edit:
-    path:     /question/edit/{id}
+    path:     /admin/question/edit/{id}
     defaults: { _controller: VgksSigtranBundle:Question:edit }
     requirements:
         id: \d+
 
 vgks_sigtran_question_delete:
-    path:     /question/delete/{id}
+    path:     /admin/question/delete/{id}
     defaults: { _controller: VgksSigtranBundle:Question:delete }
     requirements:
         id: \d+

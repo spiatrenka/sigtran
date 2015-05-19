@@ -5,3 +5,7 @@ vgks_sigtran:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+logout:
+    path:   /logout
+
