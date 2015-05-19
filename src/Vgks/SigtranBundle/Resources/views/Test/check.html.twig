@@ -1,0 +1,10 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    {% if ball != -1 %}
+        Тест окончен. Количество набранных баллов: {{ ball }}
+    {% else %}
+        Эта страница должна показать, как хорошо Вы усвоили материал. Для этого пройдите
+        <a href="{{ path('vgks_sigtran_test_show') }}">тест</a>
+    {% endif %}
+{% endblock %}

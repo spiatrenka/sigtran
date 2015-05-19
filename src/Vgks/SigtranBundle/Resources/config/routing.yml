@@ -49,3 +49,11 @@ vgks_sigtran_question_delete:
     defaults: { _controller: VgksSigtranBundle:Question:delete }
     requirements:
         id: \d+
+
+vgks_sigtran_test_show:
+    path:     /test/show
+    defaults: { _controller: VgksSigtranBundle:Test:show }
+
+vgks_sigtran_test_check:
+    path:     /test/check
+    defaults: { _controller: VgksSigtranBundle:Test:check }

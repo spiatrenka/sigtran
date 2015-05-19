@@ -1,0 +1,21 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    {{ dump(questions) }}
+    <form action="{{ path('vgks_sigtran_test_check') }}" method="post">
+        {% for question in questions %}
+            <div class="form-group">
+                <p>{{ question.text }}</p>
+            </div>
+            {% for answer in question.answers %}
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="answers[]" value="{{ answer.id }}"> {{ answer.text }}
+                    </label>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+{% endblock %}
