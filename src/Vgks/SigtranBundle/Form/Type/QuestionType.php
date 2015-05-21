@@ -13,7 +13,7 @@ class QuestionType extends AbstractType
         $builder
             ->add('text')
             ->add('answers', 'collection', array('type' => new AnswerType()))
-            ->add('save', 'submit')
+            ->add('save', 'submit', array('label' => 'Сохранить'))
         ;
     }
 

@@ -1,19 +1,26 @@
 {% extends 'VgksSigtranBundle::layout.html.twig' %}
 
 {% block content %}
-    Edit question page
-
+    <h2>Страница изменения вопроса</h2>
     {{ form_start(form) }}
-    {# render the question's only field: description #}
-    {{ form_row(form.text) }}
-
-    <h3>Answers</h3>
-    <ul class="answers">
-        {# iterate over each existing answers and render its fields: text and correct #}
-        {% for answer in form.answers %}
-            <li>{{ form_row(answer.text) }}</li>
-            <li>{{ form_row(answer.correct) }}</li>
-        {% endfor %}
-    </ul>
+    <div class="form-group">
+        {{ form_label(form.text, 'Текст вопроса') }}
+        {{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    <h3>Вопросы</h3>
+    {% for answer in form.answers %}
+        <div class="form-group">
+            {{ form_label(answer.text, 'Текст ответа') }}
+            {{ form_widget(answer.text, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="checkbox">
+            <label>
+                {{ form_label(answer.correct, ' ') }}
+                {{ form_widget(answer.correct) }}
+                Правильный ответ
+            </label>
+        </div>
+    {% endfor %}
+    {{ form_widget(form.save, { 'attr': {'class': 'btn btn-default'} }) }}
     {{ form_end(form) }}
 {% endblock %}

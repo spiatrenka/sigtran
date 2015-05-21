@@ -1,9 +1,16 @@
 {% extends 'VgksSigtranBundle::layout.html.twig' %}
 
 {% block content %}
-    Edit material page
-
+    <h2>Страница изменения материала</h2>
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="form-group">
+        {{ form_label(form.title, 'Заголовок материала') }}
+        {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.text, 'Текст материала') }}
+        {{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    {{ form_widget(form.save, { 'attr': {'class': 'btn btn-default'} }) }}
     {{ form_end(form) }}
 {% endblock %}

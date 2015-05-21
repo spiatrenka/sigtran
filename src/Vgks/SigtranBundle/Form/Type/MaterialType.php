@@ -13,7 +13,7 @@ class MaterialType extends AbstractType
         $builder
             ->add('title')
             ->add('text')
-            ->add('save', 'submit');
+            ->add('save', 'submit', array('label' => 'Сохранить'));
     }
 
     public function getName()

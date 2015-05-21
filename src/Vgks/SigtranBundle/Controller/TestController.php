@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TestController extends Controller
 {
+    const QUESTIONS = 10;
+
     public function showAction()
     {
         $questionIds = $this->getDoctrine()
@@ -17,7 +19,7 @@ class TestController extends Controller
             $ids[] = $question->getId();
         }
         $ids = array_flip($ids);
-        $randQuestions = array_rand($ids, 3);
+        $randQuestions = array_rand($ids, self::QUESTIONS);
 
         $questions = $this->getDoctrine()
             ->getRepository('VgksSigtranBundle:Questions')

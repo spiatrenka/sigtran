@@ -6,6 +6,10 @@ vgks_sigtran_success:
     path:     /success
     defaults: { _controller: VgksSigtranBundle:Default:success }
 
+vgks_sigtran_material_all:
+    path:     /material
+    defaults: { _controller: VgksSigtranBundle:Material:all }
+
 vgks_sigtran_material_show:
     path:     /material/{id}
     defaults: { _controller: VgksSigtranBundle:Material:show }
@@ -27,6 +31,10 @@ vgks_sigtran_material_delete:
     defaults: { _controller: VgksSigtranBundle:Material:delete }
     requirements:
         id: \d+
+
+vgks_sigtran_question_all:
+    path:     /question
+    defaults: { _controller: VgksSigtranBundle:Question:all }
 
 vgks_sigtran_question_show:
     path:     /question/{id}
@@ -57,3 +65,7 @@ vgks_sigtran_test_show:
 vgks_sigtran_test_check:
     path:     /test/check
     defaults: { _controller: VgksSigtranBundle:Test:check }
+
+vgks_sigtran_admin:
+    path:     /admin
+    defaults: { _controller: VgksSigtranBundle:Admin:index }

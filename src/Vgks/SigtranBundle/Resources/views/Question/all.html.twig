@@ -1,0 +1,28 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2>Страница редактирования вопросов</h2>
+    <a class="btn btn-default" href="{{ path('vgks_sigtran_question_add') }}" role="button">Добавить вопрос</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>ИД</th>
+            <th>Вопрос</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ question.id }}</td>
+                <td>{{ question.text }}</td>
+                <td><a href="{{ path('vgks_sigtran_question_edit', {'id': question.id}) }}">Изменить</a></td>
+                <td><a href="{{ path('vgks_sigtran_question_delete', {'id': question.id}) }}">Удалить</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

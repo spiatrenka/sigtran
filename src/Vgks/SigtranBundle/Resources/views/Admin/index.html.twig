@@ -1,0 +1,8 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2>Страница администратора</h2>
+    <p><a href="{{ path('vgks_sigtran_material_all') }}">Изменение</a> списка материалов</p>
+    <p><a href="{{ path('vgks_sigtran_question_all') }}">Изменение</a> списка вопросов</p>
+    <p>Режим <a href="{{ path('logout') }}">обычного пользователя</a></p>
+{% endblock %}

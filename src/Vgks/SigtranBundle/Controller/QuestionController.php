@@ -9,6 +9,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class QuestionController extends Controller
 {
+    public function allAction()
+    {
+        $questions = $this->getDoctrine()
+            ->getRepository('VgksSigtranBundle:Questions')
+            ->findAll();
+
+        return $this->render('VgksSigtranBundle:Question:all.html.twig', array(
+            'questions' => $questions,
+        ));
+    }
+
     public function showAction($id)
     {
         $question = $this->getDoctrine()

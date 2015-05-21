@@ -1,0 +1,28 @@
+{% extends 'VgksSigtranBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2>Страница редактирования материалов</h2>
+    <a class="btn btn-default" href="{{ path('vgks_sigtran_material_add') }}" role="button">Добавить материал</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>ИД</th>
+                <th>Заголовок материала</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ material.id }}</td>
+                    <td>{{ material.title }}</td>
+                    <td><a href="{{ path('vgks_sigtran_material_edit', {'id': material.id}) }}">Изменить</a></td>
+                    <td><a href="{{ path('vgks_sigtran_material_delete', {'id': material.id}) }}">Удалить</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

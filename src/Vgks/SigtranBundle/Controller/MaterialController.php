@@ -8,6 +8,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class MaterialController extends Controller
 {
+    public function allAction()
+    {
+        $materials = $this->getDoctrine()
+            ->getRepository('VgksSigtranBundle:Materials')
+            ->findAll();
+
+        return $this->render('VgksSigtranBundle:Material:all.html.twig', array(
+            'materials' => $materials,
+        ));
+    }
+
     public function showAction($id)
     {
         $material = $this->getDoctrine()
@@ -81,6 +92,17 @@ class MaterialController extends Controller
 
         return $this->redirectToRoute('vgks_sigtran_success', array(
             'message' => 'Материал был успешно удален',
+        ));
+    }
+
+    public function menuAction(Request $request)
+    {
+        $materials = $this->getDoctrine()
+            ->getRepository('VgksSigtranBundle:Materials')
+            ->findAll();
+
+        return $this->render('VgksSigtranBundle:Material:menu.html.twig', array(
+            'materials' => $materials,
         ));
     }
 }
