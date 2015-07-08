@@ -25,7 +25,7 @@ class Materials
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=45, nullable=true)
+     * @ORM\Column(name="title", type="string", length=256, nullable=true)
      * @Assert\NotBlank()
      */
     private $title;
